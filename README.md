@@ -50,8 +50,11 @@ For Twitter posts, only the title and URL are included.
 ## Folder Structure
 
 `/bin`: Contains all Scitify code for retrieving publications and sending notifications. The individual scripts for these tasks are kept as standalone scripts, designed to be set up once for automated operation without frequent manual use.
+
 `/config`: Contains configuration files where you can specify your keywords and other options (such as sources to search from, email, or Twitter settings).
+
 `/output`: Temporarily stores the retrieved data, such as publication titles, abstracts, and URLs. This data is cleared once notifications are sent.
+
 `/logs`: Contains logs of the latest retrievals and notifications, allowing you to track the status of each operation. The log files are automatically renewed with each retrieval, so only the most recent log is kept.
 
 ## Dependencies
