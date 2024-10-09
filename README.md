@@ -74,6 +74,9 @@ git clone https://github.com/cyanching/Scitify.git
 ```
 cd Scitify
 ```
+### Explore available functions in `/bin`
+The description, usage, options, and use examples of every function (`Python` or `Shell` script, since they are not meant to be used routinely, they are kept as scripts) can be queried with the `--help` flag, they can each be used individually if needed.
+
 ### Edit the following files in `/config` to set up configurations for retrieval from one or more of them:
 `arXiv_keywords.txt`
 
@@ -106,39 +109,28 @@ If you have two-factor authentication set up, which is common for Gmail, you nee
 
 - `access_token_secret`
 
+Fill these values into `twitter_API.txt` in `/config`, and do the following.
+```
+python3 twitter_papers.py --credentials_key twitter_credentials
+```
+Make sure your `twitter_API.txt` is deleted or stored safely after the setup.
 
+### Receive notifications of retrieved results
+1. Fill in retrieval and notification specifications in `paper_update_config.txt` found in `/config`.
+2. Then run `run_paper_update.sh` in `/bin` as the following to readily receive notifications of retrieved results.
+```
+bash ./run_paper_update.sh
+```
+3. To set up scheduled notifications, run the following in `/bin` to receive daily updates at 14:30.
+```
+nohup bash scheduler.sh --time 14:30 &
+```
+To specify other types of frequency settings, check options available with:
+```
+bash scheduler.sh --help
+```
+For more robust automated operation (e.g., in case of machine restart), you are recommended to set up a crontab or a systemd timer yourself.
 
-
-
-navigate to the bin folder and run the individual Python scripts or use the provided bash scripts to automate the full process. Each script includes a --help flag that provides detailed usage instructions and examples.
-
-Example commands:
-
-    To retrieve publications:
-
-    bash
-
-python3 arXiv_retrieve.py --days_before_today 7 --batch_size 200
-
-To set up scheduled retrievals:
-
-bash
-
-bash scheduler.sh --time 14:30  # Runs the retrieval daily at 14:30
-
-To get help for each script:
-
-bash
-
-    python3 email_papers.py --help
-
-Credentials Management
-
-Scitify also includes scripts to securely store and retrieve your email and Twitter credentials using keyrings. These scripts are provided in the bin folder for easy setup.
-Additional Information
-
-    The bash scripts included in the repository are used to tie together the individual Python scripts for fully automated operation. They also include their own --help flags.
-    Scitify is flexible and designed so that users only need to set it up once for automatic updates. Afterward, the tool can run independently and notify you of new publications.
 
 sudo tar -xf ~/Downloads/ctffind-4.1.14-patched.tar.gz -C /usr/local/
 ```
