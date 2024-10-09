@@ -123,10 +123,10 @@ bash ./run_paper_update.sh
 ```
 3. To set up scheduled notifications, run the following in `/bin` to receive daily updates at 14:30.
 ```
-nohup bash scheduler.sh --time 14:30 &
+nohup bash ./scheduler.sh --time 14:30 &
 ```
 To specify other types of frequency settings, check options available with:
 ```
-bash scheduler.sh --help
+bash ./scheduler.sh --help
 ```
 For more robust automated operation (e.g., in case of machine restart), you are recommended to set up a crontab or a systemd timer yourself.
