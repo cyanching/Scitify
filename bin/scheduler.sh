@@ -20,7 +20,7 @@ print_header() {
     echo "         / ^ \           | |     | |   "
     echo "        /_/ \_\          |_|     |_|   "
     echo
-    echo "    Welcome to Scitify - Your Custom Scientific Paper Retriever!"
+    echo "    Welcome to Scitify - Your Custom New Scientific Publication Notifier!"
     echo
     echo "    Author: Cyan Ching, PhD Student at Institut Curie"
     echo "    Version: 1.0 | Date: October 2024"
