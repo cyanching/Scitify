@@ -95,6 +95,7 @@ If you have two-factor authentication set up, which is common for Gmail, you nee
 2. Set up a new project in your Twitter developer account.
 3. In the app details, ensure you have at least "Read and Write" permissions in the authentication settings.
 4. Generate the following in the "Keys and Tokens" section:
+
 `bearer_token`
 
 `api_key`
