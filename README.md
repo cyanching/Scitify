@@ -1,6 +1,6 @@
 # Scitify
 
-Scitify is a custom tool designed to automatically retrieve the latest scientific publications based on your specified research interests. It sends notifications via email (currently supports sending from Outlook and Gmail accounts, but can send to any email service) and/or Twitter (operating as a bot posting paper updates). Scitify currently powers the [@Pha_Tran_Papers](https://x.com/pha_tran_papers) bot set up by [me](https://x.com/chingcyan) on Twitter (referred to as "X" by some), though for convenience, I'll keep referring to it as Twitter.
+Scitify is a custom tool designed to automatically retrieve the latest scientific publications based on your specified research interests. It sends notifications via email (currently supports sending from Outlook and Gmail accounts, but can send to any email service) and/or Twitter (operating as a bot posting paper updates). Scitify currently powers the [@Pha_Tran_Papers](https://x.com/pha_tran_papers) bot set up and managed by [me](https://x.com/chingcyan) on Twitter (referred to as "X" by some), though for convenience, I'll keep referring to it as Twitter.
 
 ## Features
 
