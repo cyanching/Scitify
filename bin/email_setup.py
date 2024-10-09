@@ -24,7 +24,7 @@ def print_header():
          / ^ \           | |     | |   
         /_/ \_\          |_|     |_|   
     
-    Welcome to Scitify - Your Custom Scientific Paper Retriever!
+    Welcome to Scitify - Your Custom New Scientific Publication Notifier!
     
     Author: Cyan Ching, PhD Student at Institut Curie
     Version: 1.0 | Date: October 2024
