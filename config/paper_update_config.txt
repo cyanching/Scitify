@@ -14,12 +14,12 @@ batch_bioRxiv=200
 include_PubMed=1
 days_PubMed=1
 batch_PubMed=200
-email_PubMed="xingyi.cheng@curie.fr"
+email_PubMed="xxx.xxx@xxx.xx"
 
 # For sending paper updates via email
 send_email=1
 service="outlook_service"
-receiver_email="xingyichengcyanching@gmail.com"
+receiver_email="xxx.xxx@xxx.xx"
 
 # For sending paper updates via Twitter
 post_tweet=1
