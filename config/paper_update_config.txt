@@ -1,0 +1,27 @@
+# Configuration for paper update script
+
+# For arXiv
+include_arXiv=1
+days_arXiv=1
+batch_arXiv=200
+
+# For bioRxiv
+include_bioRxiv=1
+days_bioRxiv=1
+batch_bioRxiv=200
+
+# For PubMed
+include_PubMed=1
+days_PubMed=1
+batch_PubMed=200
+email_PubMed="xingyi.cheng@curie.fr"
+
+# For sending paper updates via email
+send_email=1
+service="outlook_service"
+receiver_email="xingyichengcyanching@gmail.com"
+
+# For sending paper updates via Twitter
+post_tweet=1
+credentials="twitter_credentials"
+
