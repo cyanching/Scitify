@@ -1,0 +1,51 @@
+[keywords]
+biocondensate
+liquid liquid phase separation
+liquid solid phase transition
+
+[exclude_keywords]
+quantum
+quark
+battery
+superconductivity
+Fermi
+radar
+asteroseismic
+graphene
+galaxies
+geomagnetic
+MRI
+human-computer interfaces
+Payment
+radiotherapy
+combustion
+budget
+paddling
+Bose
+ceramic
+interstellar
+glacier
+radiolysis
+sentience
+planetary
+robotic
+photovoltaics
+exoplanets
+astrophysical
+space-time
+muons
+EEG
+wireless
+superconducting
+antenna
+gravity
+solar cell
+
+[required_keywords]
+bio
+cell
+cellular
+protein
+DNA
+
+
