@@ -1,27 +1,102 @@
 # Scitify
-This repository stores code for retrieving publications of a certain topic from the following sources automatically: bioRxiv, arXiv, and PubMed based on specified keywords.
 
+Scitify is a custom tool designed to automatically retrieve the latest scientific publications based on your specified research interests. It sends notifications via email (currently supports sending from Outlook and Gmail accounts, but can send to any email service) and/or Twitter (operating as a bot posting paper updates). Scitify currently powers the [@Pha_Tran_Papers](https://x.com/pha_tran_papers) bot on Twitter (referred to as "X" by some), though for convenience, I'll keep referring to it as Twitter.
 
-ctfGadget can either be used as a standalone tool or within the [TomoCHAMPS](https://github.com/cyanching/TomoCHAMPS) workflow. It runs on one or more GPU(s) and parallelised CPU cores. At last, it allows the user to inspect poor-quality images and their corresponding CTF fit plots that were picked out to be discarded, and decide whether the decision should be final. If the data quality is satisfactory, you should only have very few images to discard. And of course, if you decide to skip this step, then the tilts will be discarded automatically.
+## Features
 
-We have been using ctfGadget for fast assessment of our *in vitro* cryo-ET datasets (of varying quality) acquired (mostly on lacey grids) externally on Titans and on our own Glacios without an energy filter. And we found it is a necessary step to avoid manual curation in further processing steps especially when the ice thickness is high. After completing all ctfGadget steps, you can directly continue processing if you have TomoCHAMPS installed and activated.
+### Supported Sources
 
-This tool was written by [Cyan Ching](https://cyanching.github.io/) (if ctfGadget fails, and it is REALLY not from your end, mainly blame this person) & [Julien Maufront](https://fr.linkedin.com/in/julien-maufront-032539135) (our awesome research engineer who devoted great effort to make ctfGadget user-friendly), and tested by [Astrid Canal](https://fr.linkedin.com/in/astrid-canal-bizeul-acb/no) (our brilliant master student who made your life EVEN easier, e.g., ctfGadget now automatically closes the opened windows when inspecting poor-quality images as you go). This tool is a production of the [Molecular Microscopy of Membranes team](https://institut-curie.org/team/levy) at the [Physical Chemistry Curie Lab](https://institut-curie.org/unit/umr168) of [Institut Curie](https://curie.fr/) headed by [Daniel Lévy](https://institut-curie.org/personne/daniel-levy). 
+Scitify retrieves the latest publications based on days before today from the following sources: 
 
-## Installation
+1. [arXiv](https://arxiv.org/)
+2. [bioRxiv](https://www.biorxiv.org/)
+3. [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
 
-### 1. Install MotionCor2 and ctffind4
+You can choose to retrieve from one or more of these sources. 
 
-Before you clone ctfGadget, please make sure you already have both [MotionCor2](https://emcore.ucsf.edu/ucsf-software) and [ctffind4](https://grigoriefflab.umassmed.edu/ctf_estimation_ctffind_ctftilt) installed on your Linux machine, follow the link associated with these softwares to download and install them. They are incredibly easy to install. While MotionCor2 depends on GPU, the rest of ctfGadget only requires CPU. We recommend the following versions: `MotionCor2 1.6.4` (requires CUDA 10.1 and above), and `ctffind-4.1.14`. Choose their respective folders for installation (the recommended destination can be `/usr/local`), you simply need to `unzip` and `tar` the files you have downloaded from their sites to make them ready-to-use. 
+### Notifications
 
-#### For MotionCor2
+You have the option to receive updates via: 
 
+1. Email (can send from Outlook or Gmail to any specified email address).
+2. And/or Twitter posts (posts updates as a Twitter bot).
+
+### Automated Scheduling
+
+Scitify can be set to automatically retrieve publications at defined intervals:
+1. Every x minutes, hours, or days
+2. At a specific time each day
+3. At a specific time every x days
+
+Scitify can run on a fully automated schedule with minimal CPU usage. After setup, no further manual intervention is needed if the search criteria are properly configured.
+
+### Customizable Keyword Search
+
+Define retrieval criteria using the following types of keywords:
+1. Search keywords: Required for finding relevant papers.
+2. Exclusion keywords: Exclude publications with these terms in the title or abstract.
+3. Required keywords: Ensure that certain keywords are always present.
+
+For PubMed, you can also specify journals of interest (note: bioRxiv and arXiv are not available for journal-specific searches). Only search keywords are required, while exclusion and required keywords are optional but recommended for more accurate results.
+
+### Email Content
+
+In the email notifications you receive, you will get:
+- A list of publication titles with corresponding URLs
+- Text files (one file per source) containing titles, authors, URLs, and abstracts.
+
+For Twitter posts, only the title and URL are included.
+
+## Folder Structure
+
+`/bin`: Contains all Scitify code for retrieving publications and sending notifications. The individual scripts for these tasks are kept as standalone scripts, designed to be set up once for automated operation without frequent manual use.
+`/config`: Contains configuration files where you can specify your keywords and other options (such as sources to search from, email, or Twitter settings).
+`/output`: Temporarily stores the retrieved data, such as publication titles, abstracts, and URLs. This data is cleared once notifications are sent.
+`/logs`: Contains logs of the latest retrievals and notifications, allowing you to track the status of each operation. The log files are automatically renewed with each retrieval, so only the most recent log is kept.
+
+## Dependencies
+
+The following dependencies are not included by default in `Python`, please make sure they are installed correctly.
 ```
-sudo mkdir /usr/local/MotionCor2_1.6.4
-sudo unzip ~/Downloads/MotionCor2_1.6.4_Mar31_2023.zip -d /usr/local/MotionCor2_1.6.4
+pip install feedparser requests biopython keyring tweepy
 ```
-#### For ctffind4
 
+## Usage
+
+To use Scitify, clone this repository.
 ```
+pip install feedparser requests biopython keyring tweepy
+```
+
+navigate to the bin folder and run the individual Python scripts or use the provided bash scripts to automate the full process. Each script includes a --help flag that provides detailed usage instructions and examples.
+
+Example commands:
+
+    To retrieve publications:
+
+    bash
+
+python3 arXiv_retrieve.py --days_before_today 7 --batch_size 200
+
+To set up scheduled retrievals:
+
+bash
+
+bash scheduler.sh --time 14:30  # Runs the retrieval daily at 14:30
+
+To get help for each script:
+
+bash
+
+    python3 email_papers.py --help
+
+Credentials Management
+
+Scitify also includes scripts to securely store and retrieve your email and Twitter credentials using keyrings. These scripts are provided in the bin folder for easy setup.
+Additional Information
+
+    The bash scripts included in the repository are used to tie together the individual Python scripts for fully automated operation. They also include their own --help flags.
+    Scitify is flexible and designed so that users only need to set it up once for automatic updates. Afterward, the tool can run independently and notify you of new publications.
+
 sudo tar -xf ~/Downloads/ctffind-4.1.14-patched.tar.gz -C /usr/local/
 ```
