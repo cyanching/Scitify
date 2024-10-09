@@ -47,11 +47,11 @@ function print_help() {
       --help               Show this help message and exit.
 
     Examples:
-      bash scheduler.sh --minutes 30         # Run the script every 30 minutes.
-      bash scheduler.sh --hours 2            # Run the script every 2 hours.
-      bash scheduler.sh --days 3             # Run the script every 3 days.
-      bash scheduler.sh --time 14:30         # Run the script every day at 14:30.
-      bash scheduler.sh --time_every_days 5 08:00  # Run the script at 08:00 every 5 days.
+      bash ./scheduler.sh --minutes 30         # Run the script every 30 minutes.
+      bash ./scheduler.sh --hours 2            # Run the script every 2 hours.
+      bash ./scheduler.sh --days 3             # Run the script every 3 days.
+      bash ./scheduler.sh --time 14:30         # Run the script every day at 14:30.
+      bash ./scheduler.sh --time_every_days 5 08:00  # Run the script at 08:00 every 5 days.
       
     To run this script in the background, use: nohup bash scheduler.sh --time 14:30 &
     To check the status of the process: ps aux | grep scheduler.sh
