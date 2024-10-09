@@ -96,15 +96,15 @@ If you have two-factor authentication set up, which is common for Gmail, you nee
 3. In the app details, ensure you have at least "Read and Write" permissions in the authentication settings.
 4. Generate the following in the "Keys and Tokens" section:
 
-`bearer_token`
+- `bearer_token`
 
-`api_key`
+- `api_key`
 
-`api_key_secret`
+- `api_key_secret`
 
-`access_token`
+- `access_token`
 
-`access_token_secret`
+- `access_token_secret`
 
 
 
