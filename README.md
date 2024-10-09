@@ -130,7 +130,5 @@ To specify other types of frequency settings, check options available with:
 bash scheduler.sh --help
 ```
 For more robust automated operation (e.g., in case of machine restart), you are recommended to set up a crontab or a systemd timer yourself.
-
-
 sudo tar -xf ~/Downloads/ctffind-4.1.14-patched.tar.gz -C /usr/local/
 ```
