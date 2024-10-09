@@ -83,6 +83,9 @@ The description, usage, options, and use examples of every function (`Python` or
 `bioRxiv_keywords.txt`
 
 `PubMed_keywords.txt`
+
+These files are now pre-filled for retrieving paper updates about the phase transition of biomolecules as a use example.
+
 ### Set up your email credentials securely in `/bin`
 ```
 python3 email_setup.py --email your_email --password your_password --service outlook_service
