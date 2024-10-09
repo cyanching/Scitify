@@ -130,3 +130,9 @@ To specify other types of frequency settings, check options available with:
 bash ./scheduler.sh --help
 ```
 For more robust automated operation (e.g., in case of machine restart), you are recommended to set up a `crontab` or a `systemd timer` yourself.
+
+## Follow the author
+
+If you enjoy using Scitify, I'd love to know! You can reach out to me for scientific discussions and collaboration via my listed means of contact on my [site](https://cyanching.github.io/). 
+
+
