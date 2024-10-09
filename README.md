@@ -2,8 +2,6 @@
 This repository stores code for retrieving publications of a certain topic from the following sources automatically: bioRxiv, arXiv, and PubMed based on specified keywords.
 
 
-# ctfGadget
-
 ctfGadget can either be used as a standalone tool or within the [TomoCHAMPS](https://github.com/cyanching/TomoCHAMPS) workflow. It runs on one or more GPU(s) and parallelised CPU cores. At last, it allows the user to inspect poor-quality images and their corresponding CTF fit plots that were picked out to be discarded, and decide whether the decision should be final. If the data quality is satisfactory, you should only have very few images to discard. And of course, if you decide to skip this step, then the tilts will be discarded automatically.
 
 We have been using ctfGadget for fast assessment of our *in vitro* cryo-ET datasets (of varying quality) acquired (mostly on lacey grids) externally on Titans and on our own Glacios without an energy filter. And we found it is a necessary step to avoid manual curation in further processing steps especially when the ice thickness is high. After completing all ctfGadget steps, you can directly continue processing if you have TomoCHAMPS installed and activated.
