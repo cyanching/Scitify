@@ -66,10 +66,48 @@ pip install feedparser requests biopython keyring tweepy
 
 ## Usage
 
-To use Scitify, clone this repository.
+### To use Scitify, clone this repository.
 ```
-pip install feedparser requests biopython keyring tweepy
+git clone https://github.com/cyanching/Scitify.git
 ```
+### Next, enter the directory.
+```
+cd Scitify
+```
+### Edit the following files in `/config` to set up configurations for retrieval from one or more of them:
+`arXiv_keywords.txt`
+
+`bioRxiv_keywords.txt`
+
+`PubMed_keywords.txt`
+### Set up your email credentials securely in `/bin`
+```
+python3 email_setup.py --email your_email --password your_password --service outlook_service
+```
+or if you prefer Gmail
+```
+python3 email_setup.py --email your_email --password your_password --service gmail_service
+```
+If you have two-factor authentication set up, which is common for Gmail, you need to acquire an `App password` instead of using your Google account password.
+
+### Set up your Twitter credentials securely in `/bin`
+1. Hold or register a Twitter developer account.
+2. Set up a new project in your Twitter developer account.
+3. In the app details, ensure you have at least "Read and Write" permissions in the authentication settings.
+4. Generate the following in the "Keys and Tokens" section:
+`bearer_token`
+
+`api_key`
+
+`api_key_secret`
+
+`access_token`
+
+`access_token_secret`
+
+
+
+
 
 navigate to the bin folder and run the individual Python scripts or use the provided bash scripts to automate the full process. Each script includes a --help flag that provides detailed usage instructions and examples.
 
