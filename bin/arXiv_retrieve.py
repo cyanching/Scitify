@@ -80,7 +80,7 @@ parser = argparse.ArgumentParser(
     add_help=False  # Disable automatic help flag so we can handle it manually
 )
 
-# Define optional arguments (we'll manually handle missing args later)
+# Define optional arguments
 parser.add_argument('--days_before_today', type=int, help='Number of days before today to search for papers.')
 parser.add_argument('--batch_size', type=int, help='Number of entries to fetch per batch.')
 parser.add_argument('--quiet', action='store_true', help='Suppress output of retrieved and excluded lines.')
