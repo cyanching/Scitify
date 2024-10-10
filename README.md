@@ -144,7 +144,7 @@ To specify other types of frequency settings, check options available with:
 ```
 bash ./scheduler.sh --help
 ```
-For more robust automated operation (e.g., in case of machine restart), you are recommended to set up a `crontab` or a `systemd timer` yourself.
+For more robust automated operation (e.g., in case of machine restart), I recommend to set up a `crontab` or a `systemd timer` yourself.
 
 ## Follow the author
 
