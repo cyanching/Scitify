@@ -53,7 +53,7 @@ function print_help() {
       bash ./scheduler.sh --time 14:30         # Run the script every day at 14:30.
       bash ./scheduler.sh --time_every_days 5 08:00  # Run the script at 08:00 every 5 days.
       
-    To run this script in the background, use: nohup bash scheduler.sh --time 14:30 &
+    To run this script in the background, use: nohup bash ./scheduler.sh --time 14:30 &
     To check the status of the process: ps aux | grep scheduler.sh
     To kill the process: kill -9 xxxx, the job index is found to the right of your username
 
@@ -138,11 +138,18 @@ if [ ! -z "$specified_time" ] && [ -z "$days_interval" ]; then
     echo "Retrieving updates every day at $specified_time."
     while true; do
         current_time=$(date +"%H:%M")
-        if [ "$current_time" == "$specified_time" ]; then
+
+        # Check if the current time is equal to or later than the specified time
+        if [[ "$current_time" > "$specified_time" ]] || [[ "$current_time" == "$specified_time" ]]; then
             run_with_logging
-            sleep 86400  # Sleep for 24 hours until the next day
+            
+            # Calculate the time remaining until the next 12:00
+            now=$(date +%s)
+            next_run=$(date -d "$specified_time next day" +%s)
+            sleep_seconds=$((next_run - now))
+            echo "Task completed. Sleeping for $sleep_seconds seconds until the next run at $specified_time tomorrow..." >> ../logs/debug.log
+            sleep $sleep_seconds  # Sleep until the next occurrence of the specified time
         fi
-        sleep 60  # Check every minute
     done
 fi
 
@@ -151,14 +158,20 @@ if [ ! -z "$specified_time" ] && [ ! -z "$days_interval" ]; then
     echo "Retrieving updates every $days_interval days at $specified_time."
     while true; do
         current_time=$(date +"%H:%M")
-        if [ "$current_time" == "$specified_time" ]; then
+
+        # Check if the current time is equal to or later than the specified time
+        if [[ "$current_time" > "$specified_time" ]] || [[ "$current_time" == "$specified_time" ]]; then
             run_with_logging
-            sleep $(($days_interval * 86400))  # Sleep for n days
+            
+            # Calculate the time remaining until the next occurrence after n days
+            now=$(date +%s)
+            next_run=$(date -d "$specified_time +$days_interval days" +%s)
+            sleep_seconds=$((next_run - now))
+            echo "Task completed. Sleeping for $sleep_seconds seconds until the next run at $specified_time in $days_interval days..." >> ../logs/debug.log
+            sleep $sleep_seconds  # Sleep until the next occurrence after n days
         fi
-        sleep 60  # Check every minute
     done
 fi
 
 # If no valid options were provided, show the help message
 print_help
-
