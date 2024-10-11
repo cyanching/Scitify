@@ -4,7 +4,7 @@
 # the keywords can be modified in /Scitify/config/PubMed_keywords.txt.
 # The number of past days for update searching as well as the batch size of papers 
 # (return up to this number of papers for each search) can be specified as follows:
-# python3 PubMed_retrieve.py --days_before_today 10 --batch_size 200 --email your_email
+# python3 PubMed_retrieve.py --days_before_today 10 --batch_size 100 --email your_email
 
 # Created by Cyan Ching, PhD student at The Physical Chemistry Curie Lab of Institut Curie in France
 # This code is up to date as of October 2024.
@@ -76,7 +76,7 @@ parser = argparse.ArgumentParser(
         "Both --days_before_today, --batch_size, and --email flags are required.\n"
         "The keywords should be defined in '/Scitify/config/PubMed_keywords.txt'.\n\n"
         "Example usage:\n"
-        "  python3 PubMed_retrieve.py --days_before_today 10 --batch_size 200 --email your_email\n\n"
+        "  python3 PubMed_retrieve.py --days_before_today 10 --batch_size 100 --email your_email\n\n"
         "Created by Cyan Ching, PhD student at The Physical Chemistry Curie Lab of Institut Curie in France.\n"
         "This code is up-to-date as of October 2024."
     ),
