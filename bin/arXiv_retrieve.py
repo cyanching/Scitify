@@ -80,7 +80,7 @@ parser = argparse.ArgumentParser(
     add_help=False  # Disable automatic help flag so we can handle it manually
 )
 
-# Define optional arguments
+# Define optional arguments 
 parser.add_argument('--days_before_today', type=int, help='Number of days before today to search for papers.')
 parser.add_argument('--batch_size', type=int, help='Number of entries to fetch per batch.')
 parser.add_argument('--quiet', action='store_true', help='Suppress output of retrieved and excluded lines.')
@@ -161,9 +161,11 @@ for keyword in keywords:
                     # Apply a scoring mechanism instead of strict matching
                     score = sum(req_keyword.lower() in combined_text for req_keyword in required_keywords)
                     if not required_keywords or score > 0:
+                        # Strip whitespace and replace any newline characters in the title
+                        clean_title = ' '.join(entry.title.strip().replace('\n', ' ').split())
                         # Use the URL as a unique identifier for entries to avoid duplicates
                         entry_data = (
-                            f"Title: {entry.title}\n"
+                            f"Title: {clean_title}\n"
                             f"Authors: {', '.join(author.name for author in entry.authors)}\n"
                             f"Date: {published_date.strftime('%Y-%m-%d')}\n"
                             f"URL: {entry.link}\n"
