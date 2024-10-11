@@ -3,17 +3,17 @@
 # For arXiv
 include_arXiv=1
 days_arXiv=1
-batch_arXiv=200
+batch_arXiv=100
 
 # For bioRxiv
 include_bioRxiv=1
 days_bioRxiv=1
-batch_bioRxiv=200
+batch_bioRxiv=100
 
 # For PubMed
 include_PubMed=1
 days_PubMed=1
-batch_PubMed=200
+batch_PubMed=100
 email_PubMed="xxx.xxx@xxx.xx"
 
 # For sending paper updates via email
