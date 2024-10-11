@@ -87,8 +87,10 @@ git clone https://github.com/cyanching/Scitify.git
 cd Scitify
 ```
 ### Explore available functions in `/bin`
-The description, usage, options, and use examples of every function (`Python` or `Shell` script, since they are not meant to be used routinely, they are kept as scripts) can be queried with the `--help` flag, they can each be used individually if needed.
-
+The description, usage, options, and use examples of every function (`Python` or `Shell` script, since they are not meant to be used routinely, they are kept as scripts) can be queried with the `--help` flag, they can each be used individually if needed. Make sure to change file permission:
+```
+chmod +x scheduler.sh run_paper_update.sh
+```
 ### Edit the following files in `/config` to set up configurations for retrieval from one or more of them:
 `arXiv_keywords.txt`
 
