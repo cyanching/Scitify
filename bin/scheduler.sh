@@ -36,8 +36,7 @@ function print_help() {
 
     This Scitify function allows you to run the 'run_paper_update.sh' script at flexible intervals. 
     You can specify the frequency in minutes, hours, days, or at a specific time each day 
-    or every few days. The first time this function runs, it will execute if the specified time of 
-    day has already passed.
+    or every few days. 
 
     Options:
       --minutes n          Run the script every n minutes.
@@ -140,17 +139,24 @@ if [ ! -z "$specified_time" ] && [ -z "$days_interval" ]; then
     while true; do
         current_time=$(date +"%H:%M")
 
-        # Check if the current time is equal to or later than the specified time
-        if [[ "$current_time" > "$specified_time" ]] || [[ "$current_time" == "$specified_time" ]]; then
-            run_with_logging
-            
-            # Calculate the time remaining until the next 12:00
+        # If it's earlier than the specified time, sleep until then
+        if [[ "$current_time" < "$specified_time" ]]; then
             now=$(date +%s)
-            next_run=$(date -d "$specified_time next day" +%s)
+            next_run=$(date -d "$specified_time" +%s)
             sleep_seconds=$((next_run - now))
-            echo "Task completed. Sleeping for $sleep_seconds seconds until the next run at $specified_time tomorrow..." >> ../logs/debug.log
-            sleep $sleep_seconds  # Sleep until the next occurrence of the specified time
+            echo "Current time is earlier than $specified_time. Sleeping for $sleep_seconds seconds until the exact time..." >> ../logs/debug.log
+            sleep $sleep_seconds
+            run_with_logging
+        elif [[ "$current_time" == "$specified_time" ]]; then
+            run_with_logging
         fi
+
+        # Calculate time until the next run at the specified time tomorrow
+        now=$(date +%s)
+        next_run=$(date -d "$specified_time next day" +%s)
+        sleep_seconds=$((next_run - now))
+        echo "Task completed. Sleeping for $sleep_seconds seconds until the next run at $specified_time tomorrow..." >> ../logs/debug.log
+        sleep $sleep_seconds
     done
 fi
 
@@ -160,17 +166,24 @@ if [ ! -z "$specified_time" ] && [ ! -z "$days_interval" ]; then
     while true; do
         current_time=$(date +"%H:%M")
 
-        # Check if the current time is equal to or later than the specified time
-        if [[ "$current_time" > "$specified_time" ]] || [[ "$current_time" == "$specified_time" ]]; then
-            run_with_logging
-            
-            # Calculate the time remaining until the next occurrence after n days
+        # If it's earlier than the specified time, sleep until then
+        if [[ "$current_time" < "$specified_time" ]]; then
             now=$(date +%s)
-            next_run=$(date -d "$specified_time +$days_interval days" +%s)
+            next_run=$(date -d "$specified_time" +%s)
             sleep_seconds=$((next_run - now))
-            echo "Task completed. Sleeping for $sleep_seconds seconds until the next run at $specified_time in $days_interval days..." >> ../logs/debug.log
-            sleep $sleep_seconds  # Sleep until the next occurrence after n days
+            echo "Current time is earlier than $specified_time. Sleeping for $sleep_seconds seconds until the exact time..." >> ../logs/debug.log
+            sleep $sleep_seconds
+            run_with_logging
+        elif [[ "$current_time" == "$specified_time" ]]; then
+            run_with_logging
         fi
+
+        # Calculate time until the next run after n days
+        now=$(date +%s)
+        next_run=$(date -d "$specified_time +$days_interval days" +%s)
+        sleep_seconds=$((next_run - now))
+        echo "Task completed. Sleeping for $sleep_seconds seconds until the next run at $specified_time in $days_interval days..." >> ../logs/debug.log
+        sleep $sleep_seconds
     done
 fi
 
