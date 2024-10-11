@@ -36,7 +36,8 @@ function print_help() {
 
     This Scitify function allows you to run the 'run_paper_update.sh' script at flexible intervals. 
     You can specify the frequency in minutes, hours, days, or at a specific time each day 
-    or every few days.
+    or every few days. The first time this function runs, it will execute if the specified time of 
+    day has already passed.
 
     Options:
       --minutes n          Run the script every n minutes.
