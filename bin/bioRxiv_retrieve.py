@@ -178,7 +178,6 @@ for keyword in keywords:
                         f"Title: {item['title']}\n"
                         f"Authors: {authors}\n"
                         f"Date: {item['date']}\n"
-                        f"DOI: {item['doi']}\n"
                         f"URL: https://doi.org/{item['doi']}\n"
                         f"Abstract: {item['abstract']}\n\n"
                     )
