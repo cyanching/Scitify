@@ -73,7 +73,7 @@ For Twitter posts, only the title and URL are included.
 
 The following dependencies are not included by default in `Python`, please make sure they are installed correctly.
 ```
-pip install feedparser requests biopython keyring getpass tweepy 
+pip install feedparser requests biopython keyring tweepy 
 ```
 
 ## Usage
