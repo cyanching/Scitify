@@ -73,7 +73,7 @@ For Twitter posts, only the title and URL are included.
 
 The following dependencies are not included by default in `Python`, please make sure they are installed correctly.
 ```
-pip install feedparser requests biopython keyring tweepy
+pip install feedparser requests biopython keyring getpass tweepy 
 ```
 
 ## Usage
@@ -102,13 +102,13 @@ These files are now pre-filled for retrieving paper updates about the phase tran
 
 ### Set up your email credentials securely in `/bin`
 ```
-python3 email_setup.py --email your_email --password your_password --service outlook_service
+python3 email_setup.py --email your_email --service outlook_service
 ```
 or if you prefer Gmail
 ```
-python3 email_setup.py --email your_email --password your_password --service gmail_service
+python3 email_setup.py --email your_email --service gmail_service
 ```
-If you have two-factor authentication set up, which is common for Gmail, you need to acquire an `App password` instead of using your Google account password.
+You will be prompted to enter your password in hidden input mode. If you have two-factor authentication set up, which is common for Gmail, you need to acquire an `App password` instead of using your Google account password. 
 
 ### Set up your Twitter credentials securely in `/bin`
 1. Hold or register a Twitter developer account.
