@@ -128,7 +128,7 @@ You will be prompted to enter your password in hidden input mode. If you have tw
 
 Fill these values into `twitter_API.txt` in `/config`, and do the following.
 ```
-python3 twitter_papers.py --credentials_key twitter_credentials
+python3 twitter_setup.py --service_name twitter_credentials
 ```
 Make sure your `twitter_API.txt` is deleted or stored safely after the setup.
 
