@@ -125,12 +125,12 @@ access_token_secret = keyring.get_password(args.service_name, "access_token_secr
 
 # Check if credentials were retrieved successfully
 if all([bearer_token, api_key, api_key_secret, access_token, access_token_secret]):
-    print(f"Credentials for {args.service_name} retrieved successfully:")
-    print(f"Bearer Token: {bearer_token}")
-    print(f"API Key: {api_key}")
-    print(f"API Key Secret: {api_key_secret}")
-    print(f"Access Token: {access_token}")
-    print(f"Access Token Secret: {access_token_secret}")
+    print(f"Credentials for {args.service_name} retrieved successfully!")
+    #print(f"Bearer Token: {bearer_token}")
+    #print(f"API Key: {api_key}")
+    #print(f"API Key Secret: {api_key_secret}")
+    #print(f"Access Token: {access_token}")
+    #print(f"Access Token Secret: {access_token_secret}")
 else:
     print("Failed to retrieve one or more credentials.")
 
